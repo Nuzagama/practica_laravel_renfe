@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Train extends Model
 {
     use HasFactory;
+
+    public function tipo_train() {
+        return $this->belongsTo(TrainType::class, 'train_type_id');
+    }
 }
