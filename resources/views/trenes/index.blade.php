@@ -20,7 +20,7 @@
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
             <div class="flex justify-center">
                 <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                    Tickets - <i>La Renfe Buena</i>
+                    Trenes - <i>La Renfe Buena</i>
                 </h2>
             </div>
 
@@ -29,15 +29,15 @@
 
                     <div class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
                         <p class="mt-6 text-m font-semibold text-gray-900 dark:text-white">
-                            Aquí puedes ver todos los tickets que has comprado. <br> También puedes crear nuevos tickets, editarlos o eliminarlos.
+                            Aquí puedes ver los trenes con los que trabajamos. <br> También puedes registrar nuevos trenes, editarlos o eliminarlos.
                         </p>
 
                         <p id="newTicket" class="mt-6 text-m font-semibold text-gray-900 dark:text-white">
-                            Ver Trenes &nbsp;
-                            <a href="{{ route('trenes.index') }}">🚂</a>
+                            Ver Tickets &nbsp;
+                            <a href="{{ route('tickets.index') }}">🎟️</a>
                             <br>
-                            ¿Quieres crear un nuevo ticket? &nbsp;
-                            <a href="{{ route('tickets.create') }}">➕</a>
+                            ¿Quieres registrar un nuevo tren? &nbsp;
+                            <a href="{{ route('trenes.create') }}">➕</a>
                         </p>
 
                     
@@ -47,25 +47,24 @@
                             <table class="table-auto">
                                 <thead class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
                                     <tr>
-                                        <th>📅</th>
-                                        <th>💰</th>
-                                        <th>🎟️</th>
                                         <th>🚂</th>
-                                        <th></th>
+                                        <th>🙋🏽‍♀️</th>
+                                        <th>⌛</th>
+                                        <th>📍</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    @foreach($tickets as $ticket)
+                                    @foreach($trenes as $trene)
                                     <tr>
-                                        <td>{{ $ticket->date }}</td>
-                                        <td>{{ $ticket->price }}€</td>
-                                        <td>{{ $ticket->tipo_ticket->type }}</td>
-                                        <td>{{ $ticket->tipo_train->name }}</td>
+                                        <td>{{ $trene->name }}</td>
+                                        <td>{{ $trene->passengers }}€</td>
+                                        <td>{{ $trene->year }}</td>
+                                        <td>{{ $trene->tipo_train->type }}</td>
                                         <td>
-                                            <a href="{{ route('tickets.show', $ticket->id) }}">🔎</a>
-                                            <a href="{{ route('tickets.edit', $ticket->id) }}">✏️</a>
-                                            <form action="{{ route('tickets.destroy', $ticket->id) }}" method="POST" style="display: inline;">
+                                            <a href="{{ route('trenes.show', $trene->id) }}">🔎</a>
+                                            <a href="{{ route('trenes.edit', $trene->id) }}">✏️</a>
+                                            <form action="{{ route('trenes.destroy', $trene->id) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit">❌</button>
