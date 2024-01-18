@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->date('date');
             $table->float('price');
-            $table->unsignedBigInteger('train_type_id');
-            $table->foreign('train_type_id')->references('id')->on('trains');
+            $table->unsignedBigInteger('train_id');
+            $table->foreign('train_id')->references('id')->on('trains');
             $table->unsignedBigInteger('ticket_type_id');
             $table->foreign('ticket_type_id')->references('id')->on('ticket_types');
             $table->timestamps();

@@ -14,6 +14,6 @@ class Ticket extends Model
         }
 
     public function tipo_train() {
-        return $this->belongsTo(TrainType::class, 'train_id');
+        return $this->belongsTo(Train::class, 'train_id');
         }
 }

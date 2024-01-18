@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ticket;
+use App\Models\TicketType;
+use App\Models\Train;
 use DB;
 
 class TicketController extends Controller
@@ -23,7 +25,10 @@ class TicketController extends Controller
      */
     public function create()
     {
-        return view('tickets/create');
+        $ticketTypes = TicketType::all();
+        $trains = Train::all();
+    
+        return view('tickets/create', compact('ticketTypes', 'trains'));
     }
 
     /**
@@ -32,6 +37,7 @@ class TicketController extends Controller
     public function store(Request $request)
     {
         $ticket = new Ticket;
+        $ticket -> date = $request -> input('fecha');
         $ticket -> price = $request -> input('precio');
         $ticket -> train_id = $request -> input('train_id');
         $ticket -> ticket_type_id = $request -> input('ticket_type_id');
@@ -46,8 +52,7 @@ class TicketController extends Controller
     public function show(string $id)
     {
         $ticket = Ticket::find($id);
-
-        return view('tickets/show', ['ticket'=>$ticket]);
+        return view('tickets.show', ['ticket' => $ticket]);
     }
 
     /**
@@ -56,9 +61,12 @@ class TicketController extends Controller
     public function edit(string $id)
     {
         $ticket = Ticket::find($id);
-
-        return view('tickets/edit', ['ticket'=>$ticket]);
+        $ticketTypes = TicketType::all();
+        $trains = Train::all();
+    
+        return view('tickets/edit', compact('ticket', 'ticketTypes', 'trains'));
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -67,6 +75,7 @@ class TicketController extends Controller
     {
         $ticket = Ticket::find($id);
 
+        $ticket -> date = $request -> input('date');
         $ticket -> train_id = $request -> input('train_id');
         $ticket -> ticket_type_id = $request -> input('ticket_type_id');
         $ticket -> price = $request -> input('price');
