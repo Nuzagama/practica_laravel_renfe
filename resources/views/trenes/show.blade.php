@@ -15,7 +15,7 @@
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
             <div class="flex justify-center">
                 <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                    Detalles del Tren | Regresar <a href="{{ route('trenes.index') }}">↩️</a>
+                    Detalles del Tren
                 </h2>
             </div>
     <div class="mt-16">
@@ -38,6 +38,11 @@
            </tr>
         </tbody>
        </table>
+        </div>
+        <div class="flex justify-center">
+            <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
+                Regresar <a href="{{ route('trenes.index') }}">↩️</a>
+            </h2>
         </div>
     </div>
     </div>

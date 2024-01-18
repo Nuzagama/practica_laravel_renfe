@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tickets - Renfe</title>
+    <title>Tickets Tipo - Renfe</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&amp;display=swap" rel="stylesheet">
@@ -20,17 +20,8 @@
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
             <div class="flex justify-center">
                 <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                    <i>La Renfe Buena</i><br>
+                    Tipos de Tickets - <i>La Renfe Buena</i>
                 </h2>
-                <br>
-
-            </div>
-            <div class="flex justify-center">
-                <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                    Trenes 🚂
-                </h2>
-                <br>
-
             </div>
 
             <div class="mt-16">
@@ -38,19 +29,19 @@
 
                     <div class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
                         <p class="mt-6 text-m font-semibold text-gray-900 dark:text-white">
-                
-                            Aquí puedes ver los trenes con los que trabajamos. <br> También puedes registrar nuevos trenes, editarlos o eliminarlos.
+                            <br>
+                            Aquí puedes ver los tipos de tickets que existen. <br> También puedes crear nuevos tipos, editarlos o eliminarlos.
                         </p>
 
                         <p id="newTicket" class="mt-6 text-m font-semibold text-gray-900 dark:text-white">
+                            Ver Trenes &nbsp;
+                            <a href="{{ route('trenes.index') }}">🚂</a>
+                            
                             Ver Tickets &nbsp;
                             <a href="{{ route('tickets.index') }}">🎟️</a>
-                            
-                            Ver Trenes Tipo &nbsp;
-                            <a href="{{ route('trenes_tipos.index') }}">🚂</a>
-                            <br>
-                            ¿Quieres registrar un nuevo tren? &nbsp;
-                            <a href="{{ route('trenes.create') }}">➕</a>
+                            <br><br>
+                            ¿Quieres crear un nuevo Ticket tipo? &nbsp;
+                            <a href="{{ route('tickets_tipos.create') }}">➕</a>
                         </p>
 
                     
@@ -60,24 +51,18 @@
                             <table class="table-auto">
                                 <thead class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
                                     <tr>
-                                        <th>🚂</th>
-                                        <th>🙋🏽‍♀️</th>
-                                        <th>⌛</th>
-                                        <th>📍</th>
+                                        <th>🎟️</th>
                                         <th></th>
                                     </tr>
                                 </thead>
                                 <tbody class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-                                    @foreach($trenes as $trene)
+                                    @foreach($ticketTypes as $ticketType)
                                     <tr>
-                                        <td>{{ $trene->name }}</td>
-                                        <td>{{ $trene->passengers }}€</td>
-                                        <td>{{ $trene->year }}</td>
-                                        <td>{{ $trene->tipo_train->type }}</td>
+                                        <td>{{ $ticketType->type }}</td>
                                         <td>
-                                            <a href="{{ route('trenes.show', $trene->id) }}">🔎</a>
-                                            <a href="{{ route('trenes.edit', $trene->id) }}">✏️</a>
-                                            <form action="{{ route('trenes.destroy', $trene->id) }}" method="POST" style="display: inline;">
+                                            <a href="{{ route('tickets_tipos.show', $ticketType->id) }}">🔎</a>
+                                            <a href="{{ route('tickets_tipos.edit', $ticketType->id) }}">✏️</a>
+                                            <form action="{{ route('tickets_tipos.destroy', $ticketType->id) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit">❌</button>

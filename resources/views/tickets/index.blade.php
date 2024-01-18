@@ -29,13 +29,17 @@
 
                     <div class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
                         <p class="mt-6 text-m font-semibold text-gray-900 dark:text-white">
+                            <br>
                             Aquí puedes ver todos los tickets que has comprado. <br> También puedes crear nuevos tickets, editarlos o eliminarlos.
                         </p>
 
                         <p id="newTicket" class="mt-6 text-m font-semibold text-gray-900 dark:text-white">
                             Ver Trenes &nbsp;
                             <a href="{{ route('trenes.index') }}">🚂</a>
-                            <br>
+                            
+                            Ver Tickets Tipo &nbsp;
+                            <a href="{{ route('tickets_tipos.index') }}">🎟️</a>
+                            <br><br>
                             ¿Quieres crear un nuevo ticket? &nbsp;
                             <a href="{{ route('tickets.create') }}">➕</a>
                         </p>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Nuevo Tren - Renfe</title> 
+    <title>Modificar Tren - Renfe</title> 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&amp;display=swap" rel="stylesheet">
@@ -15,27 +15,27 @@
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
             <div class="flex justify-center">
                 <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                   Registrar Tren | Regresar <a href="{{ route('trenes.index') }}">↩️</a>
+                   Modificar Tren
                 </h2>
             </div>
     <div class="mt-16">
     <div class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
-    <form action="{{ route('trenes.store') }}" method="POST">
+        <form method="post" action="{{route('trenes.update', ['trene'=>$trene->id])}}">
         @csrf
-    
-        <label>💰</label>
-        <input type="text" name="name" value="" placeholder="Nombre">
+        {{ method_field('PUT') }}
+        <label>🚂</label>
+        <input type="text" name="name" value="{{$trene->name}}">
         <br><br>
 
-        <label>💰</label>
-        <input type="number" step="1" name="passengers" value="" placeholder="Pasajeros">
+        <label>🙋🏽‍♀️</label>
+        <input type="number" step="1" name="passengers" value="{{$trene->passengers}}">
         <br><br>
 
-        <label>💰</label>
-        <input type="number" step="1" name="year" value="" placeholder="Año Fabricación">
+        <label>⌛ &nbsp;</label>
+        <input type="number" step="1" name="year" value="{{$trene->year}}">
         <br><br>
 
-        <label for="train_type_id">🎟️</label>
+        <label for="train_type_id">📍 &nbsp;&nbsp;</label>
         <select name="train_type_id" id="train_type_id">
             @foreach ($trenesTypes as $type)
                 <option value="{{ $type->id }}">{{ $type->type }}</option>
@@ -45,6 +45,11 @@
 
         <button style="color:#4b5563;" type="submit">Modificar Tren</button>
     </form>
+</div>
+<div class="flex justify-center">
+    <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
+       Regresar <a href="{{ route('trenes.index') }}">↩️</a>
+    </h2>
 </div>
 </div>
 </div>

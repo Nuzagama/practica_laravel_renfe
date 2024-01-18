@@ -13,7 +13,9 @@ class TicketTypeController extends Controller
      */
     public function index()
     {
-        //
+        $ticketTypes = TicketType::all();
+
+        return view('tickets_tipos/index', ['ticketTypes' => $ticketTypes]);
     }
 
     /**
@@ -21,7 +23,9 @@ class TicketTypeController extends Controller
      */
     public function create()
     {
-        //
+        $ticketTypes = TicketType::all();
+
+        return view('tickets_tipos/create', ['ticketTypes' => $ticketTypes]);
     }
 
     /**
@@ -29,7 +33,11 @@ class TicketTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ticketType = new TicketType;
+        $ticketType -> type = $request -> input('type');
+        $ticketType -> save();
+
+        return redirect('tickets_tipos');
     }
 
     /**
@@ -37,7 +45,8 @@ class TicketTypeController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $ticketType = TicketType::find($id);
+        return view('tickets_tipos/show', ['ticketType' => $ticketType]);
     }
 
     /**
@@ -45,7 +54,8 @@ class TicketTypeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $tickets_tipo = TicketType::find($id);
+        return view('tickets_tipos/edit', compact('tickets_tipo'));
     }
 
     /**
@@ -53,7 +63,12 @@ class TicketTypeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $ticketType = TicketType::find($id);
+
+        $ticketType -> type = $request -> input('type');
+        $ticketType -> save();
+
+        return redirect('tickets_tipos');
     }
 
     /**
@@ -61,6 +76,7 @@ class TicketTypeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DB::table('ticket_types')->where('id', '=', $id)->delete();
+        return redirect('tickets_tipos');
     }
 }

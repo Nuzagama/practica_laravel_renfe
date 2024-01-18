@@ -15,7 +15,7 @@
         <div class="max-w-7xl mx-auto p-6 lg:p-8">
             <div class="flex justify-center">
                 <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
-                   Crear Ticket | Regresar <a href="{{ route('tickets.index') }}">↩️</a>
+                   Crear Ticket
                 </h2>
             </div>
     <div class="mt-16">
@@ -50,6 +50,11 @@
     
         <button style="color:#4b5563;" type="submit">Crear Ticket</button>
     </form>
+</div>
+<div class="flex justify-center">
+    <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
+       Regresar <a href="{{ route('tickets.index') }}">↩️</a>
+    </h2>
 </div>
 </div>
 </div>
